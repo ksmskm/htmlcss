@@ -3,7 +3,6 @@ var beep = require('beepbeep');
 var gutil = require('gulp-util');
 var plumber = require('gulp-plumber');
 var uglify = require('gulp-uglifyjs');
-// var sass = require('gulp-ruby-sass');
 var sass = require('gulp-sass');
 var livereload = require('gulp-livereload');
 
@@ -15,7 +14,7 @@ var onError = function (err) {
 // JS
 gulp.task('uglifyjs', function() {
   return gulp.src([
-    // './node_modules/jquery/dist/jquery.min.js',
+    // './node_moduless/jquery/dist/jquery.min.js',
     './js/main.js'
   ])
   .pipe(plumber({
@@ -37,6 +36,11 @@ gulp.task('sass', function() {
   .pipe(sass().on('error', sass.logError))
   .pipe(gulp.dest('./css'))
   .pipe(livereload());
+});
+
+// CSS
+gulp.task('css', function() {
+  gulp.src('css/*.css').pipe(livereload());
 });
 
 // HTML
